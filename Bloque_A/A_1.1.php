@@ -1,8 +1,7 @@
 <!--PHP--> 
 <?php
-    $num = 6;
-    $num1 = 2;
-    $resultado = $num + $num1;
+    $name = "carmen";
+    $precio = 2;
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,8 @@
 </head>
 
 <body>
-<h2><?php echo $resultado; ?></h2>
+<h2><?php echo $name; ?></h2>
+<h2><?php echo $precio; ?></h2>
 </body>
 
 </html>
