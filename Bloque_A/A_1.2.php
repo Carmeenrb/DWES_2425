@@ -1,9 +1,9 @@
 <!--PHP--> 
 <?php
 //Paso 1: cambiar la variable name a mi nombre
-    $name = "carmen";
+    $name = "Carmen";
 //Paso 2: cambiar la variable name a otro nombre
-    $name = "ana";
+    $name = "Ana";
 //Precio: 
     $price= 5;
 ?>
