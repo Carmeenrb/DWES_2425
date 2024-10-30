@@ -3,24 +3,24 @@
     //Paso 1: cambiar la variable name a mi nombre
     $name = "carmen";
     //Paso 2: cambiar la variable precio 
-    $precio = 2;
+    $price = 2;
 ?>
-
+<!--HTML-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1</title>
+    <title>Variables</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<h1>Tienda</h1>
-<!--Mostramos la variable name -->
-<h2>Bienvenida <?php echo $name; ?></h2>
-<!--Mostramos la variable precio -->
-<h2>El precio es de:<?php echo $precio; ?></h2>
+<h1>The Candy Store</h1>
+<h2>Welcome <?php echo $name; ?></h2>
+<p>The cost of your candy is
+$<?php echo $price; ?> per pack.</p>
 </body>
 
 </html>

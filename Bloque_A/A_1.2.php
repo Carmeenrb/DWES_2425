@@ -4,22 +4,25 @@
     $name = "carmen";
 //Paso 2: cambiar la variable name a otro nombre
     $name = "ana";
+//Precio: 
+    $price= 5;
 ?>
-
+<!--HTML-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Updating Variables</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<!--Mostramos la variable name con mi nombre-->
-<h2><?php echo $name; ?></h2>
-<!--Mostramos la variable name con otro nombre-->
-<h2><?php echo $name; ?></h2>
+<h1>The Candy Store</h1>
+<h2>Welcome <?php echo $name; ?></h2>
+<p>The cost of your candy is
+$<?php echo $price; ?> per pack.</p>
 </body>
 
 </html>
