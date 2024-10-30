@@ -12,14 +12,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Actividad 1</title>
 </head>
 
 <body>
+<h1>Tienda</h1>
 <!--Mostramos la variable name -->
-<h2><?php echo $name; ?></h2>
+<h2>Bienvenida <?php echo $name; ?></h2>
 <!--Mostramos la variable precio -->
-<h2><?php echo $precio; ?></h2>
+<h2>El precio es de:<?php echo $precio; ?></h2>
 </body>
 
 </html>
