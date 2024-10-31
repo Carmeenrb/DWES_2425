@@ -1,9 +1,10 @@
 <!--PHP-->
 <?php
     $items = 'Chocolate';
-    $stock = 5;
-    $wanted = 3;
-    $can_buy = ($wanted <= $stock);
+    $stock = 10;
+    $wanted = 8;
+    $deliver= true;
+    $can_buy = (($wanted <= $stock) && ($deliver == true));
 
 ?>
 
@@ -13,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 8: String Operator</title>
+    <title>Actividad 11</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>

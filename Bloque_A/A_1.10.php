@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 8: String Operator</title>
+    <title>Actividad 10</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
