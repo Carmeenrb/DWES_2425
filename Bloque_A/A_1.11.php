@@ -1,9 +1,8 @@
 <!--PHP-->
 <?php
     $items = 'Chocolate';
-    //Paso 1: cambiar los valores de stock y wanted (por lo que el valor de can_buy cambiara)
-    $stock = 10;
-    $wanted = 8;
+    $stock = 5;
+    $wanted = 3;
     $can_buy = ($wanted <= $stock);
 
 ?>
