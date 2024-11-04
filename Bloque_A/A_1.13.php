@@ -30,7 +30,7 @@ $precios=[
 <body>
     <h1>Libreria Carmela</h1>
     <h2>Bienvenida <?= $nombre;?></h2>
-    <h3>Ofertas de Navidad: </h3>
+    <h2>Ofertas de Navidad: </h2>
         <ul>
             <li>Novela <?= $novelas[0]?>: <?= $precios['romantica']?> €</li>
             <li>Novela de  <?= $novelas[1]?>: <?= $precios['misterio']?> €</li>
@@ -41,11 +41,11 @@ $precios=[
         </ul>
     <h2>Pack Ahorro 3 x 2</h2>
         <ol>
-            <li>Pack Papa Noel:<?= $novelas[0],$novelas[1],$novelas[5]; ?></li>
-            <li>Pack Duende: <?= $novelas[2],$novelas[3],$novelas[4]; ?></li>
-        <ol>
-
-    <h3>Descuento de un 20%</h3>
+            <li>Pack Papa Noel: <?= $novelas[0];?>, <?= $novelas[1];?>, <?= $novelas[5];?> = <?= $noel;?> €</li>
+            <li>Pack Duende:  <?= $novelas[2];?>, <?= $novelas[3];?>, <?= $novelas[4];?> = <?= $duende;?> €</li>
+        </ol>
+    
+    <h2>Descuento de un 20%</h2>
 
 </body>
 </html>
