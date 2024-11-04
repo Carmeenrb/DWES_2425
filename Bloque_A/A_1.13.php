@@ -13,9 +13,18 @@ $precios=[
     'aventuras' => 15,
 ];
 //Operaciones de 3x2
-//pack noel
+    //pack noel
     $noel=$precios['romantica'] + $precios['misterio'];
+    //pack duende
     $duende=$precios['terror'] + $precios['fantasia'];
+
+//Operaciones descuento 20%
+    $novela0= $precios['romantica'] * 0.80;
+    $novela1= $precios['misterio'] * 0.80;
+    $novela2= $precios['terror'] * 0.80;
+    $novela3= $precios['fantasia'] * 0.80;
+    $novela4= $precios['historicas'] * 0.80;
+    $novela5= $precios['aventuras'] * 0.80;
 ?>
 
 <!--HTML-->
@@ -46,6 +55,14 @@ $precios=[
         </ol>
     
     <h2>Descuento de un 20%</h2>
+    <ul>
+        <li><?= $novelas[0]?> = <?= $novela0; ?> €</li>
+        <li><?= $novelas[1]?> = <?= $novela1; ?> €</li>
+        <li><?= $novelas[2]?> = <?= $novela2; ?> €</li>
+        <li><?= $novelas[3]?> = <?= $novela3; ?> €</li>
+        <li><?= $novelas[4]?> = <?= $novela4; ?> €</li>
+        <li><?= $novelas[5]?> = <?= $novela5; ?> €</li>
+    </ul>
 
 </body>
 </html>
