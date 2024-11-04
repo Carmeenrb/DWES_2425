@@ -1,7 +1,7 @@
 <!--PHP-->
 <?php
 //Saludos
-
+    $nombre = 'Isabel';
 //Array de los tipos de novelas 
 $novelas=["Romantica","Misterio","Terror","Fantasía","Hitoricas","Aventuras"];
 $precios=[
@@ -12,6 +12,10 @@ $precios=[
     'historicas' => 18,
     'aventuras' => 15,
 ];
+//Operaciones de 3x2
+//pack noel
+    $noel=$precios['romantica'] + $precios['misterio'];
+    $duende=$precios['terror'] + $precios['fantasia'];
 ?>
 
 <!--HTML-->
@@ -25,21 +29,23 @@ $precios=[
 </head>
 <body>
     <h1>Libreria Carmela</h1>
-    <h2>Ofertas por el dia del libro: </h2>
-    <ul>
-        <li>Novela <?= $novelas[0]?>: <?= $precios['romantica']?> €</li>
-        <li>Novela de  <?= $novelas[1]?>: <?= $precios['misterio']?> €</li>
-        <li>Novela de  <?= $novelas[2]?>: <?= $precios['terror']?> €</li>
-        <li>Novela de  <?= $novelas[3]?>: <?= $precios['fantasia']?> €</li>
-        <li>Novela de  <?= $novelas[4]?>: <?= $precios['historicas']?> €</li>
-        <li>Novela de  <?= $novelas[5]?>: <?= $precios['aventuras']?> €</li>
-    </ul>
-    <h2>Pack Ahorro 2 x 1</h2>
-    <ol>
-        <li>Pack </li>
-    <ol>
+    <h2>Bienvenida <?= $nombre;?></h2>
+    <h3>Ofertas de Navidad: </h3>
+        <ul>
+            <li>Novela <?= $novelas[0]?>: <?= $precios['romantica']?> €</li>
+            <li>Novela de  <?= $novelas[1]?>: <?= $precios['misterio']?> €</li>
+            <li>Novela de  <?= $novelas[2]?>: <?= $precios['terror']?> €</li>
+            <li>Novela de  <?= $novelas[3]?>: <?= $precios['fantasia']?> €</li>
+            <li>Novela de  <?= $novelas[4]?>: <?= $precios['historicas']?> €</li>
+            <li>Novela de  <?= $novelas[5]?>: <?= $precios['aventuras']?> €</li>
+        </ul>
+    <h2>Pack Ahorro 3 x 2</h2>
+        <ol>
+            <li>Pack Papa Noel:<?= $novelas[0],$novelas[1],$novelas[5]; ?></li>
+            <li>Pack Duende: <?= $novelas[2],$novelas[3],$novelas[4]; ?></li>
+        <ol>
 
-    <h2>Descuento de un 20%</h2>
+    <h3>Descuento de un 20%</h3>
 
 </body>
 </html>
