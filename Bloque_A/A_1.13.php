@@ -5,28 +5,29 @@
     $nombre = 'Manuel';
     $sms = "$saludo $nombre";
 //Array de los tipos de novelas 
-$novelas=["Romantica","Misterio","Terror","Fantasía","Hitoricas","Aventuras"];
-$precios=[
-    'romantica'=> 20,
-    'misterio' => 15,
-    'terror' => 25,
-    'fantasia' => 30,
-    'historicas' => 18,
-    'aventuras' => 15,
-];
+    $novelas=[
+        ['nombre'=> 'Romantica','precio'=> 20,],
+        ['nombre'=> 'Misterio','precio'=> 15,],
+        ['nombre'=> 'Terror','precio'=> 30,],
+        ['nombre'=> 'Fantasia','precio'=> 18,],
+        ['nombre'=> 'Historicas','precio'=> 25,],
+        ['nombre'=> 'Aventuras','precio'=> 15,],
+        
+    ];
 //Operaciones de 3x2
     //pack noel
-    $noel=$precios['romantica'] + $precios['misterio'];
+    $noel=$novelas[0]['precio'] + $novelas[1]['precio'];
     //pack duende
-    $duende=$precios['terror'] + $precios['fantasia'];
+    $duende=$novelas[2]['precio'] + $novelas[3]['precio'];
 
 //Operaciones descuento 20%
-    $novela0= $precios['romantica'] * 0.80;
-    $novela1= $precios['misterio'] * 0.80;
-    $novela2= $precios['terror'] * 0.80;
-    $novela3= $precios['fantasia'] * 0.80;
-    $novela4= $precios['historicas'] * 0.80;
-    $novela5= $precios['aventuras'] * 0.80;
+    $novela0= $novelas[0]['precio'] * 0.80;
+    $novela1= $novelas[1]['precio'] * 0.80;
+    $novela2= $novelas[2]['precio'] * 0.80;
+    $novela3= $novelas[3]['precio'] * 0.80;
+    $novela4= $novelas[4]['precio'] * 0.80;
+    $novela5= $novelas[5]['precio'] * 0.80;
+
 ?>
 
 <!--HTML-->
@@ -42,28 +43,30 @@ $precios=[
     <h1>Libreria Carmela</h1>
     <h2><?= $sms;?></h2>
     <h2>Ofertas de Navidad: </h2>
+    <!--Lista Ofertas de navidad -->
         <ul>
-            <li>Novela <?= $novelas[0]?>: <?= $precios['romantica']?> €</li>
-            <li>Novela de  <?= $novelas[1]?>: <?= $precios['misterio']?> €</li>
-            <li>Novela de  <?= $novelas[2]?>: <?= $precios['terror']?> €</li>
-            <li>Novela de  <?= $novelas[3]?>: <?= $precios['fantasia']?> €</li>
-            <li>Novela de  <?= $novelas[4]?>: <?= $precios['historicas']?> €</li>
-            <li>Novela de  <?= $novelas[5]?>: <?= $precios['aventuras']?> €</li>
+            <li>Novela <?= $novelas[0]['nombre']?>: <?= $novelas[0]['precio']?> €</li>
+            <li>Novela de  <?= $novelas[1]['nombre']?>: <?= $novelas[1]['precio']?> €</li>
+            <li>Novela de  <?= $novelas[2]['nombre']?>: <?= $novelas[2]['precio']?> €</li>
+            <li>Novela de  <?= $novelas[3]['nombre']?>: <?= $novelas[3]['precio']?> €</li>
+            <li>Novela de  <?= $novelas[4]['nombre']?>: <?= $novelas[4]['precio']?> €</li>
+            <li>Novela de  <?= $novelas[5]['nombre']?>: <?= $novelas[5]['precio']?> €</li>
         </ul>
+    <!--Pack ahorro-->
     <h2>Pack Ahorro 3 x 2</h2>
         <ol>
-            <li>Pack Papa Noel: <?= $novelas[0];?>, <?= $novelas[1];?>, <?= $novelas[5];?> = <?= $noel;?> €</li>
-            <li>Pack Duende:  <?= $novelas[2];?>, <?= $novelas[3];?>, <?= $novelas[4];?> = <?= $duende;?> €</li>
+            <li><b>Pack Papa Noel: </b> <?= $novelas[0]['nombre'];?>, <?= $novelas[1]['nombre'];?>, <?= $novelas[5]['nombre'];?> = <?= $noel;?> €</li>
+            <li> <b>Pack Duende: </b> <?= $novelas[2]['nombre'];?>, <?= $novelas[3]['nombre'];?>, <?= $novelas[4]['nombre'];?> = <?= $duende;?> €</li>
         </ol>
-    
+    <!--Listado del 20% en los libros-->
     <h2>Descuento de un 20%</h2>
     <ul>
-        <li><?= $novelas[0]?> = <?= $novela0; ?> €</li>
-        <li><?= $novelas[1]?> = <?= $novela1; ?> €</li>
-        <li><?= $novelas[2]?> = <?= $novela2; ?> €</li>
-        <li><?= $novelas[3]?> = <?= $novela3; ?> €</li>
-        <li><?= $novelas[4]?> = <?= $novela4; ?> €</li>
-        <li><?= $novelas[5]?> = <?= $novela5; ?> €</li>
+        <li><?= $novelas[0]['nombre']?> = <?= $novela0; ?> €</li>
+        <li><?= $novelas[1]['nombre']?> = <?= $novela1; ?> €</li>
+        <li><?= $novelas[2]['nombre']?> = <?= $novela2; ?> €</li>
+        <li><?= $novelas[3]['nombre']?> = <?= $novela3; ?> €</li>
+        <li><?= $novelas[4]['nombre']?> = <?= $novela4; ?> €</li>
+        <li><?= $novelas[5]['nombre']?> = <?= $novela5; ?> €</li>
     </ul>
 
 </body>
