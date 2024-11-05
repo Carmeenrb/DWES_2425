@@ -42,7 +42,7 @@
 <body>
     <h1>Libreria Carmela</h1>
     <h2><?= $sms;?></h2>
-    <h2>Ofertas de Navidad: </h2>
+    <h3>Ofertas de Navidad: </h3>
     <!--Lista Ofertas de navidad -->
         <ul>
             <li>Novela <?= $novelas[0]['nombre']?>: <?= $novelas[0]['precio']?> €</li>
@@ -53,13 +53,13 @@
             <li>Novela de  <?= $novelas[5]['nombre']?>: <?= $novelas[5]['precio']?> €</li>
         </ul>
     <!--Pack ahorro-->
-    <h2>Pack Ahorro 3 x 2</h2>
+    <h3>Pack Ahorro 3 x 2</h3>
         <ol>
             <li><b>Pack Papa Noel: </b> <?= $novelas[0]['nombre'];?>, <?= $novelas[1]['nombre'];?>, <?= $novelas[5]['nombre'];?> = <?= $noel;?> €</li>
             <li> <b>Pack Duende: </b> <?= $novelas[2]['nombre'];?>, <?= $novelas[3]['nombre'];?>, <?= $novelas[4]['nombre'];?> = <?= $duende;?> €</li>
         </ol>
     <!--Listado del 20% en los libros-->
-    <h2>Descuento de un 20%</h2>
+    <h3>Descuento de un 20%</h3>
     <ul>
         <li><?= $novelas[0]['nombre']?> = <?= $novela0; ?> €</li>
         <li><?= $novelas[1]['nombre']?> = <?= $novela1; ?> €</li>
