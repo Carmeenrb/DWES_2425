@@ -1,7 +1,9 @@
 <!--PHP-->
 <?php
 //Saludos
-    $nombre = 'Isabel';
+    $saludo='Bienvenido';
+    $nombre = 'Manuel';
+    $sms = "$saludo $nombre";
 //Array de los tipos de novelas 
 $novelas=["Romantica","Misterio","Terror","Fantasía","Hitoricas","Aventuras"];
 $precios=[
@@ -38,7 +40,7 @@ $precios=[
 </head>
 <body>
     <h1>Libreria Carmela</h1>
-    <h2>Bienvenida <?= $nombre;?></h2>
+    <h2><?= $sms;?></h2>
     <h2>Ofertas de Navidad: </h2>
         <ul>
             <li>Novela <?= $novelas[0]?>: <?= $precios['romantica']?> €</li>
