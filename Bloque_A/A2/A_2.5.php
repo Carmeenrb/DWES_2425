@@ -1,7 +1,7 @@
 <?php
 //VARIABLES
 //Paso 1: Cambiar el valor a wednesday
-    $day = 'Monday';
+    //$day = 'Monday';
     $day = 'Wednesday';
     
 //CONDICIONAL
@@ -13,9 +13,9 @@
             $offer = '20% off mints';
             break;
             //Paso 5: Añadir una sentencia para wednesday
-            case 'Wednesday':
-                $offer = '20% off toffe';
-                break;
+        case 'Wednesday':
+            $offer = '20% off toffe';
+            break;
         default:
         $offer = 'Buy three packs, get one free';
     }
