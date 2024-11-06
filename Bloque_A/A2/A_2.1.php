@@ -1,8 +1,9 @@
 <?php
-//Paso 1: Cambiar el nombre 
-    $name='Carmen';
+//Paso 1: Cambiar el nombre a cadena vacia
+    $name='';
     $saludo='Hola';
     //Condicional
+    //Al ser cadena vacia no entra en la condicional
     if($name !== ''){
         $saludo = "Welcome back, $name";
     }
