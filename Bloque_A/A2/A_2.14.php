@@ -1,11 +1,11 @@
 <?php
 // variables
 $name='Ivy';
-
 $greeting = 'Hello';
+
 // condicional
 if($name){
-    $greeting = 'Elcome back,' .$name;
+    $greeting = 'Welcome back,' .$name;
 }
 
 $product = 'Lollipop';
@@ -23,7 +23,7 @@ for ($i=1;$i<=20;$i++){
 ?>
 <?php require_once 'RecursosA1/includes/header.php';?>
 <p><?= $greeting;?></p>
-<h2><?= $product;?>Discounts</h2>
+<h2><?= $product;?> Discounts</h2>
 <table>
     <tr>
         <th>Packs</th>
@@ -33,7 +33,7 @@ for ($i=1;$i<=20;$i++){
         <tr>
             <td>
                 <?=$quantity?>
-                packs<?= ($quantity ===1) ? '': 's' ;?>
+                pack<?= ($quantity ===1) ? '': 's' ;?>
             </td>
             <td>
                 $<?=$price;?>
