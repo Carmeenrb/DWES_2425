@@ -8,7 +8,7 @@ if($name){
     $greeting = 'Elcome back,' .$name;
 }
 
-$prodcutos = 'Lollipop';
+$product = 'Lollipop';
 // Paso 6: cambiar el valor de cost a 10
 //$cost = 2;
 $cost = 10;
@@ -21,7 +21,7 @@ for ($i=1;$i<=20;$i++){
 }
 
 ?>
-<?php require 'includes/header.php';?>
+<?php require_once 'RecursosA1/includes/header.php';?>
 <p><?= $greeting;?></p>
 <h2><?= $product;?>Discounts</h2>
 <table>
@@ -41,4 +41,4 @@ for ($i=1;$i<=20;$i++){
         </tr>
     <?php }?>
 </table>
-<?include 'includes/footer.php'?>
+<?php include 'RecursosA1/includes/footer.php';?>

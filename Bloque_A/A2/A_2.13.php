@@ -16,31 +16,11 @@ if ($stock ==0){
 
 ?>
 
-<?php require_once 'includes/header.php';?>
-<main>
+<?php require_once 'RecursosA1/includes/header.php';?>
+
 <h2>Chocolate</h2>
     <p><?=$message;?></p>
-</main>
-    <?php include 'includes/footer.php'?>
+
+<?php include 'RecursosA1/includes/footer.php';?>
 
 
-
-<!-- <!DOCTYPE html> 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 13: include</title>
-    <link rel="stylesheet" href="RecursosA1/css/styles.css">
-
-    
-</head>
-<body>
-    <h1>The Candy Store</h1>
-    <h2>Chocolate</h2>
-    
-
-    
-</body>
-</html>
--->

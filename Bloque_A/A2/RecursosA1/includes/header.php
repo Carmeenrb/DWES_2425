@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>The Candy Store</title>
-    <!-- <link rel="stylesheet" href="css/styles.css"> -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="RecursosA1/css/styles.css"> 
+    
   </head>
   <body>
     <h1>The Candy Store</h1>
