@@ -29,9 +29,9 @@ for($i =1; $i<=12;$i++){
 }
 ?>
 <!-- Llamamos a la cabecera el ejercicio -->
-<?php require_once 'RecursosA1/includes/cabecera15.php';?>
+<?php require_once 'RecursosA1/includes/cabecera.php';?>
 <body>
-    <h1>Club Deportivo</h1>
+    
     <h2><?=$saludo;?></h2>
     <h3><?=$mensaje_descuento;?></h3>
     <table>
@@ -47,4 +47,4 @@ for($i =1; $i<=12;$i++){
         </tr>
         <?php } ?>
     </table>
-<?php include 'RecursosA1/includes/pie_pag15.php';?>
+<?php include 'RecursosA1/includes/footer.php';?>

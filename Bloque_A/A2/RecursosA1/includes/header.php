@@ -11,7 +11,7 @@
       <a href="index.php">Home</a> | 
       <a href="candy.php">Candy</a> | 
       <a href="about.php">About</a> | 
-      <a href="contact.php">Contact</a>
+      <a href="contact.php">Contact</a> |
       <!-- Añadir un nuevo enlace -->
-      <a href="nuevo_enlace.php">Este es el nuevo enlace</a>
+      <a href="nuevo_enlace.php"> Quienes somos</a> 
     </nav>
