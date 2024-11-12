@@ -34,7 +34,7 @@ for($i =1; $i<=12;$i++){
 
 ?>
 <!-- Llamamos a la cabecera el ejercicio -->
-<?php require_once 'RecursosA1/includes/cabecera.php';?>
+<?php require 'RecursosA1/includes/cabecera.php';?>
 <body>
     
     <h2><?=$saludo;?></h2>
