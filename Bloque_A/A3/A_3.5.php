@@ -6,7 +6,7 @@ $tax_rate = 0.5;
 $discount=0.1;
 function calculate_running_total($price,$quantity){
     global $tax_rate;
-    static $running_total=0;
+    static $running_total=0; // el static lo que hace es ir acumulando lo anterior
     global $discount;
     $total=0;
     $total=$price * $quantity;
