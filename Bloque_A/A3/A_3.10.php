@@ -1,0 +1,58 @@
+<?php
+// Crear un array de productos
+$productos=[
+    ['nombre'=> 'Dark Chocolate', 'calculo'=> calculate_cost(5,10,5)],
+    'Milk chocolate',
+    'Write chocolate',
+    'Mint candy',
+    'Lemon candy',
+    'Coffee candy ',
+
+
+];
+// Añadimos un parametro para calcular los impuestos
+function calculate_cost($cost,$quantity,$discount=0,$tax=0){
+    $cost = $cost * $quantity;
+    return $cost - $discount;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3.10: Default Values for Paraments</title>
+    <link rel="stylesheet" href="RecursosA1/css/styles.css">
+</head>
+<body>
+    <h1>The Candy Store</h1>
+    <h2>Chocolates</h2>
+    <p>Dark chocolate $ <?= calculate_cost(5,10,5);?></p>
+    <p>Milk chocolate $ <?= calculate_cost(3,4);?></p>
+    <p>Write chocolate $ <?= calculate_cost(4,15,20);?></p>
+
+    <!-- Crear mas productos,con los impuestos -->
+    <h2>Candy</h2>
+    <p>Mint candy $ <?= calculate_cost(2,15,5,2);?></p>
+    <p>Lemon candy $ <?= calculate_cost(4,4);?></p>
+    <p>Coffee candy $ <?= calculate_cost(3,10,25,3);?></p>
+
+<!-- Crear una tabla para mostrar los costos calculados de los productos -->
+<table>
+    <tr>
+        <th>Productos</th>
+        <th>Cost</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Tax</th>
+    </tr>
+    <?php foreach($productos as $producto){?>
+    <tr>
+        <td><?=$producto['nombre']?></td>
+        <td><?=$producto['calculo']?></td>
+    
+    </tr>
+    <?php }?>
+</table>
+</body>
+</html>
