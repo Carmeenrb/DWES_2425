@@ -39,6 +39,9 @@ $global_prices= calculate_prices($us_price,$rates);
     <p>US $ <?=$us_price;?></p>
     <p>(UK &pound; <?=$global_prices['pound'];?> |
         EU &euro; <?=$global_prices['euro'];?> |
-        JP &yen; <?=$global_prices['yen'];?>)</p>
+        JP &yen; <?=$global_prices['yen'];?> |
+        <!-- Añadimos las dos nuevas para mostrarlo -->
+        AUD $ <?=$global_prices['dolar_a'];?> |
+        CAD $ <?=$global_prices['dolar_c'];?> )</p>
 </body>
 </html>
