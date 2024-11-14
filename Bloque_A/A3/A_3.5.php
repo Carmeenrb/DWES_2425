@@ -45,13 +45,13 @@ function calculate_running_total($price,$quantity){
             <td>Toffe:</td>
             <td>$3</td>
             <td>5</td>
-            <td><?= calculate_running_total(2,5);?></td>
+            <td><?= calculate_running_total(3,5);?></td>
         </tr>
         <tr>
             <td>Fudge:</td>
             <td>$5</td>
             <td>4</td>
-            <td><?= calculate_running_total(2,5);?></td>
+            <td><?= calculate_running_total(5,4);?></td>
         </tr>
         <tr>
             <!-- Paso 1:Añadir un producto mas a la tabla -->

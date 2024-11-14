@@ -5,8 +5,8 @@
 $tax='25';
 function calculate_total($price,$quantity){
     $cost=$price * $quantity;
-    //Cambiamos el porcentaje para que sea 40 por ejemplo en vez de 20
-    $tax= $cost * (40/100);
+    //Cambiamos el porcentaje para que sea 25 por ejemplo en vez de 20
+    $tax= $cost * (25/100);
     $total =$cost + $tax;
     return $total;
 }
