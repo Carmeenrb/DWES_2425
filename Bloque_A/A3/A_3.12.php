@@ -33,21 +33,8 @@ function calculate_tax(float $precio, int $cantidad,int $tax=0):float|int{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actividad 3.11:Ejemplo Final</title>
-    <style>
-        table {
-            width: 70%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-    </style>
+    <link rel="stylesheet" href="RecursosA1/css/stile_libros.css">
+    
 </head>
 <body>
     <h1>Los Libros de Carmela</h1>
