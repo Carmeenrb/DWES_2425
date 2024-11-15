@@ -1,19 +1,19 @@
 <?php
 // Crear un array de productos
 $productos=[
-    ['nombre'=> 'Dark Chocolate', 'calculo'=> calculate_cost(5,10,5)],
-    'Milk chocolate',
-    'Write chocolate',
-    'Mint candy',
-    'Lemon candy',
-    'Coffee candy ',
-
-
+    ['nombre'=> 'Dark Chocolate', 'cost'=>5,'quantity'=>10,'discount'=>5,'tax'=>0 ],
+    ['nombre'=> 'Milk Chocolate', 'cost'=>3,'quantity'=>4,'discount'=>0,'tax'=>0 ],
+    ['nombre'=> 'Write Chocolate', 'cost'=>4,'quantity'=>15,'discount'=>20,'tax'=>0 ],
+    ['nombre'=> 'Mint Candy', 'cost'=>2,'quantity'=>15,'discount'=>5,'tax'=>2 ],
+    ['nombre'=> 'Lemon Candy', 'cost'=>4,'quantity'=>4,'discount'=>0,'tax'=>0 ],
+    ['nombre'=> 'Coffee Candy', 'cost'=>3,'quantity'=>10,'discount'=>25,'tax'=>3 ],
 ];
 // Añadimos un parametro para calcular los impuestos
 function calculate_cost($cost,$quantity,$discount=0,$tax=0){
     $cost = $cost * $quantity;
-    return $cost - $discount;
+    // Añadir el tax
+    $tax=$cost*($tax/100);
+    return ($cost + $tax) - $discount;
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ function calculate_cost($cost,$quantity,$discount=0,$tax=0){
     <p>Mint candy $ <?= calculate_cost(2,15,5,2);?></p>
     <p>Lemon candy $ <?= calculate_cost(4,4);?></p>
     <p>Coffee candy $ <?= calculate_cost(3,10,25,3);?></p>
-
+<br>
 <!-- Crear una tabla para mostrar los costos calculados de los productos -->
 <table>
     <tr>
@@ -49,7 +49,10 @@ function calculate_cost($cost,$quantity,$discount=0,$tax=0){
     <?php foreach($productos as $producto){?>
     <tr>
         <td><?=$producto['nombre']?></td>
-        <td><?=$producto['calculo']?></td>
+        <td><?=$producto['cost']?></td>
+        <td><?=$producto['quantity']?></td>
+        <td><?=$producto['discount']?></td>
+        <td><?=$producto['tax']?></td>
     
     </tr>
     <?php }?>
