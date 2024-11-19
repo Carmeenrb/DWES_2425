@@ -8,7 +8,7 @@ $libros=[
     'libro3' =>['nombre'=> 'Alas de Onix','precio' => 33,'stock'=>100],
 ];
 //Crear una funcion para ver cuanto stock tenemos y los impuestos...
-function get_total_stock(array $libros):int|float{
+function get_total_stock(array $libros):int{
     $total_stock=0;
         foreach($libros as $libros){
             $total_stock+=$libros['stock'];
@@ -18,13 +18,13 @@ function get_total_stock(array $libros):int|float{
     return $total_stock;
 }
 //Funcion para que devuelva el valor total del inventario
-function get_inventory_value(float $precio, int $cantidad):int|float{
+function get_inventory_value(float $precio, int $cantidad):float{
     return $precio * $cantidad;
 }
 
 //Funcion que devuelve el importe del impuesto a pagar
-function calculate_tax(float $precio, int $cantidad,int $tax=0):float|int{
-    return($precio * $cantidad)*($tax/100);
+function calculate_tax(float $precio,int $tax=0):float{
+    return $precio*($tax/100);
 }
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,6 @@ function calculate_tax(float $precio, int $cantidad,int $tax=0):float|int{
             <th>Libros</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Total de Stock</th>
             <th>Valor en Inventario</th>
             <th>Impuesto a pagar</th>
         </tr>
@@ -53,13 +52,12 @@ function calculate_tax(float $precio, int $cantidad,int $tax=0):float|int{
             <td><?=$libro['nombre']?></td>
             <td><?=$libro['precio']?></td>
             <td><?=$libro['stock']?></td>
-            <td><?= get_total_stock($libros)?></td>
             <td><?= get_inventory_value($libro['precio'],$libro['stock'],)?></td>
-            <td><?= calculate_tax($libro['precio'],$libro['stock'],$tax_rate)?></td>
+            <td><?= calculate_tax($libro['precio'],$tax_rate)?></td>
             
         </tr>
         <?php }?>
     </table>
-    
+    <h2>Total de stock de libros:<?= get_total_stock($libros)?></h2>
 </body>
 </html>
