@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:500,700");
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   font-family: "Raleway", sans-serif;
   background-color: #ffffff;
-  color: #f0b27a   ;
+  color: #f0b27a;
   margin: 0px;
   background-image: url("../img/libro1.jpg");
   background-size: 380px 380px;
@@ -19,7 +20,7 @@ h1 {
   font-family: "Playfair Display", serif;
   padding: 10px 20px 12px 20px;
   margin: 0px;
-  color: #bb8fce ;
+  color: #bb8fce;
 }
 
 h2 {
@@ -43,7 +44,7 @@ table {
   border: 1px solid#d2b4de;
   border-spacing: 0px;
 }
-  
+
 th {
   text-transform: uppercase;
   text-align: left;
@@ -53,9 +54,14 @@ th {
   background-color: #d2b4de;
   color: #bb8fce;
 }
-  
+
+tr:hover {
+  background-color: rgb(255, 255, 255);
+}
+
 td {
   padding: 5px 10px;
+  border: 1px solid#d2b4de;
 }
 
 a {
@@ -75,10 +81,11 @@ nav a {
   text-transform: uppercase;
   padding: .5em;
 }
+
 nav a:hover {
   color: #fff;
 }
- 
+
 .button {
   background-color: #fbccbf;
   color: #850825;
@@ -108,9 +115,9 @@ nav a:hover {
   transition: .1s background-color linear;
   color: #850825;
 }
-  
+
 .offer {
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 footer {

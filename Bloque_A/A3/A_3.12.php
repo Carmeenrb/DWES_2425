@@ -26,6 +26,9 @@ function get_inventory_value(float $precio, int $cantidad):float{
 function calculate_tax(float $precio,int $tax=0):float{
     return $precio*($tax/100);
 }
+
+// Coger el total de estock
+$stock_total=get_total_stock($libros);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +60,14 @@ function calculate_tax(float $precio,int $tax=0):float{
             
         </tr>
         <?php }?>
+        <tr>
+            <td colspan="2">Total</td>
+            <td><?=$stock_total?></td>
+            <td colspan="2"></td>
+
+        </tr>
+    
     </table>
-    <h2>Total de stock de libros:<?= get_total_stock($libros)?></h2>
+
 </body>
 </html>
