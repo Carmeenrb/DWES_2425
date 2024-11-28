@@ -77,3 +77,4 @@ class libreria{
 <!-- Volver a mostrar los libros con las modificaciones realizadas -->
 <h2>Libreria Libros Actualizada</h2>
 <p><?=$libreria->mostrarLibros()?></p>
+<?php include 'includes/footer.php'; ?>
