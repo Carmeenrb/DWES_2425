@@ -1,4 +1,6 @@
 <?php
+declare(stric_types = 1);
+
 class libreria{
     // Propiedades
     public array $libros;

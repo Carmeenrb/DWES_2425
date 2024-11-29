@@ -15,11 +15,7 @@ class Vehiculo{
         return "Marca:{$this->marca}, Modelo: {$this->modelo},Matricula: {$this->matricula}";
     }
     public function estaDisponible(){
-        if($this->disponible ===1){
-            return true;
-        }else{
-            return false;
-        }
+        return $this->disponible;
     }
 }
 
@@ -27,31 +23,31 @@ class Fleet{
     public string $nombre;
     public array $vehiculos;
     // Constructor
-    public function __construct(string $nombre, array $vehiculos){
+    public function __construct(string $nombre, array $vehiculos=[]){
         $this->nombre = $nombre;
         $this->vehiculos= $vehiculos;
     }
     public function agregarVehiculo(Vehiculo $coche){
         $this->vehiculos[]=$coche;
     }
-    public function listarVehiculos(){
-        $resultado= '';
-        foreach($this->vehiculos as $vehiculo){
-            $resultado.= "<p>{$vehiculo->marca} {$vehiculo->modelo} {$vehiculo->matricula}</p>";
-        }
-        return $resultado;
+    // public function listarVehiculos(){
+    //     $resultado= '';
+    //     foreach($this->vehiculos as $vehiculo){
+    //         $resultado.= "<p>{$vehiculo->marca} {$vehiculo->modelo} {$vehiculo->matricula}</p>";
+    //     }
+    //     return $resultado;
+    // }
+    public function mostrarVehiculos():array{
+        return $this->vehiculos;
     }
     public function vehiculosDisponibles(){
-        $resultado= '';
+        $v_disponibles= [];
         foreach($this->vehiculos as $vehiculo){
-            if($vehiculo->disponible !== false){
-                $resultado.= "<p>{$vehiculo->marca} {$vehiculo->modelo} {$vehiculo->matricula}</p>";
+            if($vehiculo->estaDisponible()){
+                $v_disponibles[]=$vehiculo;
             }
         }
-        if($resultado==''){
-            return "No se encuentra ningun coche disponible";
-        }
-        return $resultado;
+        return $v_disponibles;
     }
         
     

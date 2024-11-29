@@ -19,7 +19,15 @@ class book{
 }
 // Clase library
 class Library{
-    public array $libros=[];
+
+    public array $libros;
+    public string $nombre;
+
+    public function __construct(string $nombre, array $libros){
+        $this->nombre=$nombre;
+        $this->libros=$libros;
+
+    }
     // Recibe un objeto de la clase book
     public function agregarBook(Book $libro){
         $this->libros[]=$libro;
@@ -28,8 +36,8 @@ class Library{
     public function eliminarLibro(string $titulo): bool {
         foreach ($this->libros as $index => $libro) {
             if ($libro->titulo === $titulo) {
-                unset($this->libros[$index]);
-                $this->libros = array_values($this->libros); // Reindexar el array
+                unset($this->libros[$index]); //Lo borra del array
+                $this->libros = array_values($this->libros); // Reindexar el array con un nuevo array
                 return true;
             }
         }
@@ -43,13 +51,25 @@ class Library{
         }
         return $resultado;
     }
+
+    public function getBooks(): array{
+        return $this->libros;
+    }
 }
 ?>
 <?php
 include 'includes/header.php'; 
 $book1=new Book('invisible','Eloy Moreno ',250);
 $book2=new Book('Harry Potter','JK Rowling ',450);
-$libreria= new Library(); // No recibe nada ya que se rellena dentro
+//Asi 
+$libreria= new Library("Biblioteca Doña", 
+    [
+        new Book('invisible','Eloy Moreno ',250),
+        new Book('Harry Potter','JK Rowling ',450)
+    ]
+); 
+// se podria poner en una variable y ya meter la variable
+
 ?>
 
 <!-- Agregar libros -->
