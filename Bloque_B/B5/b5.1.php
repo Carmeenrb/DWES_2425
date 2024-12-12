@@ -1,5 +1,7 @@
 <?php
 $texto = "Bienvenidos al blog de entradas";
+$texto1 = "Es importante proceder con cuidado al analizar los datos importantes. Este es un ejemplo de cómo generar un resumen mostrando solo las primeras palabras de un texto, asegurando que el contenido sea conciso y directo.";
+
 // cadena sin espacios
 // Reemplazamos el espacio por nada 
 $txt_sin_espacios= str_replace(" ","",$texto);
