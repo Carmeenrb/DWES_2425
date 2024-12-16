@@ -1,5 +1,7 @@
 <?php 
-$text = "Total: £444";
+// $text = "Total: £444";
+// Modificar el texto con un caracter chino por ejemplo
+$text="Hola: 汉字"; // necesita mas de un bits para representarlo
 
 ?>
 <!DOCTYPE html>
@@ -16,11 +18,11 @@ $text = "Total: £444";
     <b>Character count using <code>mb_strlen()</code>:</b>
     <?=mb_strlen($text);?>
     <br>
-    <b>First match of 444<code>strpos()</code>:</b>
-    <?=strpos($text,'444');?>
+    <b>First match of 汉字/漢字, <code>strpos()</code>:</b>
+    <?=strpos($text,'汉字');?>
     <br>
-    <b>First match of 444 <code>mb_strpos()</code>:</b>
-    <?=mb_strpos($text,'444');?>
+    <b>First match of 汉字/漢字, <code>mb_strpos()</code>:</b>
+    <?=mb_strpos($text,'汉字');?>
     <br>
 </body>
 </html>
