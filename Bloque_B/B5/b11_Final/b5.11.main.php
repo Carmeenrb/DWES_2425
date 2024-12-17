@@ -40,5 +40,15 @@ require_once "b5.11.Social.php";
     <?php foreach($red_social->ordenarNombres() as $indice => $mostrar){?>
         <p><?=$indice?> -> <?=$mostrar?> </p>
     <?php }?>
+    <!-- Añadir un nuevo interés -->
+    <?php
+        $numInterests = $RS->getNumInterests();
+
+        // Modificar manualmente para ver el efecto (para que funcione tiene que poner >)
+        if ($RS->addInterest("Fotografía") < $numInterests) {
+            header("Location: b5.11.fracias.php");
+            exit();
+        }
+?>
 </body>
 </html>

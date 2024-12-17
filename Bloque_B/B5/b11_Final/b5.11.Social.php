@@ -5,11 +5,11 @@ class Social
     private const NOMBRE = 'Carmelilla';
     private array $intereses;
     private array $interesesId;
-    public function __construct(array $intereses, array $interesesId = [])
+    public function __construct(array $intereses)
     {
 
         $this->intereses = $intereses;
-        $this->interesesId = $interesesId;
+        $this->interesesId = [];
     }
     public function getNom(): string
     {
@@ -23,32 +23,42 @@ class Social
     {
         return $this->interesesId;
     }
-    public function generarAsociativo(): array
+    public function generarAsociativo()
     {
-        $num_max = count($this->intereses);
-        $i = 0;
-
-        while (count($this->interesesId) < $num_max) {
-
-            // Generar un número aleatorio entre 1 y num_max
-            $generar_num = random_int(0, $num_max - 1);
-
-            // Verificar si el número ya está en el array
-            if (!array_key_exists($generar_num, $this->interesesId)) {
-                $this->interesesId[$generar_num] = $this->intereses[$i];// Añadir número si no está repetido
-                $i++;
+        $this->interesesId = [];
+        
+        foreach ($this->intereses as $int) {
+            $newID = mt_rand(1, count($this->intereses));
+            while (array_key_exists($newID, $this->interesesId)) {
+                $newID = mt_rand(1, count($this->intereses));
             }
 
+            $this->interesesId[$newID] = $int;
         }
+        // $num_max = count($this->intereses);
+        // $i = 0;
 
-        return $this->interesesId;
+        // while (count($this->interesesId) < $num_max) {
+
+        //     // Generar un número aleatorio entre 1 y num_max
+        //     $generar_num = random_int(0, $num_max - 1);
+
+        //     // Verificar si el número ya está en el array
+        //     if (!array_key_exists($generar_num, $this->interesesId)) {
+        //         $this->interesesId[$generar_num] = $this->intereses[$i];// Añadir número si no está repetido
+        //         $i++;
+        //     }
+
+        // }
+
+        // return $this->interesesId;
 
     }
 
     // Funcion que convierte un array en un string
     public function listarString(): string
     {
-        $lista_string = implode(',', $this->intereses);
+        $lista_string = implode(' - ', $this->intereses);
         return $lista_string;
     }
     public function mostrarLista()
@@ -87,11 +97,6 @@ class Social
         asort($ordenarNombres);
 
         return $ordenarNombres;
-    }
-    // Comentado
-    public function nuevaPag()
-    {
-
     }
 
 }
