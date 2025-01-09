@@ -20,29 +20,17 @@ if(!$valido){
 
     // $sms = $productos;
 }else{
-    $sms='<ul>
-    <li><b>'.$productos[$id]['nombre'].'</b></li>
-        <ul>
-            <li>'.$productos[$id]['descripcion'].'</li>
-            <li>'.$productos[$id]['precio'].'</li>
-            <li>'.$productos[$id]['disponibilidad'].'</li>
-        </ul>
-</ul>';
+    $sms='
+    <h1><b>'.$productos[$id]['nombre'].'</b></h1>
+        <p>'.$productos[$id]['descripcion'].'</p>
+        <p>'.$productos[$id]['precio'].'</p>
+        <p>'.$productos[$id]['disponibilidad'].'</p>';
 }
-
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-</head>
-<body>
 
+<?php include 'includes/header.php' ?>
+<h1>Productos</h1>
 <p><?=$sms?></p>
 <a href="b6.4_index.php">Volver a la lista de productos</a>
 
-</body>
-</html>
+<?php include 'includes/footer.php' ?>

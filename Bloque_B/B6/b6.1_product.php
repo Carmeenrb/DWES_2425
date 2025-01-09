@@ -14,27 +14,14 @@ $productos = [
     ['nombre' => 'Teclado','descripcion' => 'Teclado mecanico','precio' => 50,'disponibilidad' => 'Agotado'],
     ['nombre' => 'Raton','descripcion' => 'Teclado mecanico','precio' => 50,'disponibilidad' => 'Agotado'],
 ];
-
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-</head>
-<body>
-<ul>
-    <li><b><?= $productos[$id]['nombre']?>:</b></li>
-    <ul>
-                <li><?= $productos[$id]['descripcion']?></li>
-                <li><?= $productos[$id]['precio']?></li>
-                <li><?= $productos[$id]['disponibilidad']?></li>
-            </ul>
-    </ul>
+<?php include 'includes/header.php' ?>
 
+    <h1><b>Productos</b></h1>
+    <h2><?= $productos[$id]['nombre']?></h2>
+                <p><?= $productos[$id]['descripcion']?></p>
+                <p><?= $productos[$id]['precio']?></p>
+                <p><?= $productos[$id]['disponibilidad']?></p>
 <a href="b6.1_index.php">Volver a la lista de productos</a>
 
-</body>
-</html>
+<?php include 'includes/footer.php' ?>

@@ -16,17 +16,11 @@
     
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usando cadena de consulta para seleccionar contenido (||)</title>
-</head>
-<body>
+<!-- Usando cadena de consulta para seleccionar contenido (||) -->
+<?php include 'includes/header.php' ?>
+
     <h1><?=$city?></h1>
     <p><?= $address ?></p>
     <p><a href="b6.2_index.php">Volver a la lista de ciudades</a></p>
     
-</body>
-</html>
+<?php include 'includes/footer.php' ?>

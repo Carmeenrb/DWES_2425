@@ -2,20 +2,11 @@
 // pagina 49
     $productos = [0,1,2,4];
 ?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usando cadena de consulta para seleccionar contenido</title>
-</head>
-<body>
+<?php include 'includes/header.php' ?>
+    <!-- Usando cadena de consulta para seleccionar contenido -->
     <h1>Lista de Productos</h1>
-    <ul>
         <?php foreach($productos as $id ){ ?>
-                <li><a href="b6.3_product.php?id=<?= $id ?>"><?= $id ?></a></li>
+                <p><a href="b6.3_product.php?id=<?= $id ?>"><?= $id ?></a></p>
         <?php } ?>
-    </ul>
 
-</body>
-</html>
+<?php include 'includes/footer.php' ?>

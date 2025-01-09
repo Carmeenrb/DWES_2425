@@ -21,5 +21,5 @@ $sms = $_GET['msg'] ?? 'Click the link above';
 <p><?= htmlspecialchars($sms)?></p>
 <!-- Usar la función html_escape para escapar el contenido del mensaje -->
 <p><?= html_escape($sms) ?></p>
-</body>
-</html>
+
+<?php include 'includes/footer.php' ?>

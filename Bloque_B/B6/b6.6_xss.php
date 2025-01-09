@@ -14,14 +14,9 @@ $options = [
     'ENT_COMPAT' => html_escape($sms, ENT_COMPAT),
 ];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSS Example</title>
-</head>
-<body>
+    <!-- xxs ejemplo -->
+<?php include 'includes/header.php' ?>
+
     <h1>Mensaje Recibido</h1>
     <!-- Mostrar el mensaje escapado con diferentes opciones -->
     <p><b>ENT_QUOTES | ENT_HTML5:</b> <?= $options['ENT_QUOTES | ENT_HTML5'] ?></p>
@@ -30,5 +25,5 @@ $options = [
 
     <!-- Enlace para regresar a la página principal -->
     <a href="b6.6_index.php">Volver a la página principal</a>
-</body>
-</html>
+    
+<?php include 'includes/footer.php' ?>

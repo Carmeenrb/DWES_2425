@@ -18,14 +18,9 @@
     }
 
 ?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usando cadena de consulta para seleccionar contenido</title>
-</head>
-<body>
+
+<?php include 'includes/header.php' ?>
+<!-- Usando cadena de consulta para seleccionar contenido -->
     <h1>Lista de Ciudades</h1>
 
         <?php foreach($cities as $ciudad => $value){ ?>
@@ -36,5 +31,4 @@
         <p><?= $address ?></p>
 
 
-</body>
-</html>
+<?php include 'includes/footer.php' ?>
