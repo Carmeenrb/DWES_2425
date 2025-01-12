@@ -32,7 +32,7 @@ if ($submitted) {
         <p><strong>Email:</strong> <?= $email ?></p>
         <p><strong>Teléfono:</strong> <?= $phone ?></p>
 <?php } else{ ?>
-    <form method="get" action="b6.8_registro_get.php">
+    <form method="get" action="registro_get.php">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required><br>
 
@@ -53,7 +53,7 @@ if ($submitted) {
 
             <label for="phone">Teléfono:</label>
             <input type="tel" id="phone" name="phone" required><br>
-            
+
             <button type="submit">Registrar</button>
             <p><input type="hidden" name="submitted" value="True"></p>
         </form>
