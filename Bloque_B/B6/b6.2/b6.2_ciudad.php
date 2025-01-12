@@ -17,10 +17,10 @@
 
 ?>
 <!-- Usando cadena de consulta para seleccionar contenido (||) -->
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
 
     <h1><?=$city?></h1>
     <p><?= $address ?></p>
     <p><a href="b6.2_index.php">Volver a la lista de ciudades</a></p>
     
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

@@ -27,9 +27,9 @@ if ($id == "") {
 }
 ?>
 
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
 <h1>Productos</h1>
 <p><?= $sms ?></p>
 <a href="b6.3_index.php">Volver a la lista de productos</a>
 
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

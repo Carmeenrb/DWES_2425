@@ -2,7 +2,8 @@
 // pagina 28
 $productos = [0, 1, 2];
 ?>
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -11,4 +12,4 @@ $productos = [0, 1, 2];
             <p><a href="b6.1_product.php?id=<?= $id ?>"><?= $id ?></a></p>
         <?php } ?>
     
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

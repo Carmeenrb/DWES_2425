@@ -15,7 +15,7 @@ $productos = [
     ['nombre' => 'Raton','descripcion' => 'Teclado mecanico','precio' => 50,'disponibilidad' => 'Agotado'],
 ];
 ?>
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
 
     <h1><b>Productos</b></h1>
     <h2><?= $productos[$id]['nombre']?></h2>
@@ -24,4 +24,4 @@ $productos = [
                 <p><?= $productos[$id]['disponibilidad']?></p>
 <a href="b6.1_index.php">Volver a la lista de productos</a>
 
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

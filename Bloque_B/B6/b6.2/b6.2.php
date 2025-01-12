@@ -19,7 +19,7 @@
 
 ?> 
 
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
 <!-- Usando cadena de consulta para seleccionar contenido -->
     <h1>Lista de Ciudades</h1>
 
@@ -31,4 +31,4 @@
         <p><?= $address ?></p>
 
 
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

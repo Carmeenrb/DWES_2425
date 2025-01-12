@@ -4,7 +4,7 @@
     $ciudades = ['London' ,'Sydney','NYC','Tokio'];
 ?> 
 
-<?php include 'includes/header.php' ?>
+<?php include '../includes/header.php' ?>
 <!-- Usando cadena de consulta para seleccionar contenido -->
     <h1>Lista de Ciudades</h1>
 
@@ -14,4 +14,4 @@
         <!-- Paso 1: Probar con tokio para que nos de error ya que no esta -->
         <!-- <a href="get-2.php?city=tokio"></a> -->
 
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>
