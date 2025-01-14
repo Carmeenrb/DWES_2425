@@ -38,14 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sms = '¡Formulario válido! Gracias por aceptar los términos y condiciones.';
     }
     
-    // // Verificar si existen errores
-    // $invalid = implode('', $error);
-    // if ($invalid) {
-    //     $sms = 'Por favor corrige los errores';
-    // } else {
-    //     $sms = '¡Formulario válido! Gracias por aceptar los términos y condiciones.';
-    // }
-    
 
 }
 // Funciones para validar texto y num
