@@ -21,7 +21,6 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     $filters['edad']['options']['max_range'] = 65;
     $filters['url'] = FILTER_VALIDATE_URL;
     $filters['check'] = FILTER_VALIDATE_BOOLEAN;
-    $formulario = filter_input_array(INPUT_POST,$filters);
 
     // Validar entradas
     $formulario = filter_input_array(INPUT_POST, $filters);
