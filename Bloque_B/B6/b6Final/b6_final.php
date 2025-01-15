@@ -85,8 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <span style="color: red;" class="error"><?= $error['telefono'] ?></span><br>
 
     Tipo de evento: <br>
-    Presencial <input type="radio" name="evento" value="presencial"<?= $usuario['evento']=== 'presencial' ? 'checked' : '' ?>>
-    Online <input type="radio" name="evento" value="online" <?= $usuario['evento']=== 'online' ? 'checked' : '' ?>>
+    Presencial <input type="radio" name="evento" value="presencial"<?= $usuario['evento'] === 'presencial' ? 'checked' : '' ?>>
+    Online <input type="radio" name="evento" value="online" <?= $usuario['evento'] === 'online' ? 'checked' : '' ?>>
     <span style="color: red;" class="error"><?= $error['evento'] ?></span><br>
     
 
