@@ -21,12 +21,21 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     $filters['edad']['options']['min_range'] = 18;
     $filters['edad']['options']['max_range'] = 65;
     $filters['url'] = FILTER_VALIDATE_URL;
-    $filters['check'] = FILTER_VALIDATE_BOOLEAN;
+    $filters['check']['filter'] = FILTER_VALIDATE_BOOLEAN;
+    $filters['check']['flags'] = FILTER_NULL_ON_FAILURE;
+
+    // Obtener los valores enviados mediante post
     $formulario = filter_input_array(INPUT_POST);
-    $datos=filter_var_array($formulario,$filters);
+
+    // validar los datos con los filtros 
+    $datos['email'] = filter_var($datos['email'], FILTER_SANITIZE_EMAIL);
+    $datos['edad'] = filter_var($datos['edad'], FILTER_SANITIZE_NUMBER_INT);
+    $datos['url'] = filter_var($datos['url'], FILTER_SANITIZE_URL);
+    
+    
 
     // Validar entradas
-    $formulario = filter_input_array(INPUT_POST, $filters);
+    // $formulario = filter_input_array(INPUT_POST, $filters);
 
     // Validar errores
     $error['email'] = $formulario['email'] ? '' : 'El correo electrónico no es válido';
