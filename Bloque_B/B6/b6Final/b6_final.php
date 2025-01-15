@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filters['correo'] = FILTER_VALIDATE_EMAIL;
     $filters['telefono']['filter'] = FILTER_VALIDATE_REGEXP;
     $filters['telefono']['options']['regexp'] = '/[0-9]{9}/';
+    $filters['evento']['filter'] = FILTER_VALIDATE_REGEXP;
+    $filters['evento']['options']['regexp'] = '/(presencial|online)/';
     $filters['check']['filter'] = FILTER_VALIDATE_BOOLEAN;
     $filters['check']['flags'] = FILTER_NULL_ON_FAILURE;
 
@@ -73,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     Nombre: <input type="text" name="nombre" value="<?= $usuario['nombre'] ?>" require>
     <span style="color: red;" class="error"><?= $error['nombre'] ?></span><br>
 
-    Apellidos: <input type="text" name="edad" value="<?= $usuario['apellido'] ?>" require>
+    Apellidos: <input type="text" name="apellido" value="<?= $usuario['apellido'] ?>" require>
     <span style="color: red;" class="error"><?= $error['apellido'] ?></span><br>
 
     Correo: <input type="text" name="correo" value="<?= $usuario['correo'] ?>" require>
@@ -83,9 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <span style="color: red;" class="error"><?= $error['telefono'] ?></span><br>
 
     Tipo de evento: <br>
-    Presencial <input type="radio" name="presencial" value="true">
-    Online <input type="radio" name="online" value="true">
+    Presencial <input type="radio" name="evento" value="presencial"<?= $usuario['evento']=== 'presencial' ? 'checked' : '' ?>>
+    Online <input type="radio" name="evento" value="online" <?= $usuario['evento']=== 'online' ? 'checked' : '' ?>>
     <span style="color: red;" class="error"><?= $error['evento'] ?></span><br>
+    
 
     Acepta terminos y condiciones <input type="checkbox" name="check" value="true" require>
     <span style="color: red;"> <?= $error['check'] ?> </span><br>
