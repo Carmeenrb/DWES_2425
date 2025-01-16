@@ -33,11 +33,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <p>Selecciona una Asignatura:</p>
         <!-- Caja de seleccion -->
         <select name="asignatura" id="asignatura">
-        <option value="">Seleccione una asignatura</option>
-            <?php foreach ($optativas as $opcion) { ?>
-                <option value="<?= htmlspecialchars($opcion) ?>" 
-                <?= ($asignatura === $opcion) ? 'selected' : '' ?>><?= $opcion ?></option>
-            <?php } ?>
+            <option value="">Seleccione una asignatura</option>
+                <?php foreach ($optativas as $opcion) { ?>
+                    <option value="<?= htmlspecialchars($opcion) ?>" 
+                    <?= ($asignatura === $opcion) ? 'selected' : '' ?>><?= $opcion ?></option>
+                <?php } ?>
         </select>
         <input type="submit" value="Guardar">
 

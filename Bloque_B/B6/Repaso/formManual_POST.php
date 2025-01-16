@@ -6,7 +6,7 @@ $usuario=[
     'correo' => '',
     'edad' => '',
     'contrasenia' => '',
-    'check' => ''
+    'check' => false
 ];
 $datos=[
     'nombre' => '',
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $usuario['edad'] = $_POST['edad'];
     $usuario['contrasenia'] = $_POST['contrasenia'];
     $usuario['check'] = isset($_POST['check']);
+    // $usuario['check'] = isset($_POST['check']) ? true : false;
     
     $usuario = filter_input_array(INPUT_POST);
 
@@ -108,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <span class="error"><?= $error['contrasenia'] ?></span><br>
 
     <!-- Confirmacion de consentimiento -->
-    Aceptar las condiciones <input type="checkbox" name="check" value="<?= $datos['check'] ? 'checked' : '' ?>">
+    Aceptar las condiciones <input type="checkbox" name="check" value="true"<?= $datos['check'] ? 'checked' : '' ?>>
     <span class="error"><?= $error['check'] ?></span><br>
 
     <input type="submit" name='sent' value="enviar">
