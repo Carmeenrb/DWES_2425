@@ -18,7 +18,15 @@ $error = [
     'evento' => '',
     'check' => '',
 ];
-$datos = [];
+$datos = [
+
+    'nombre' => '',
+    'apellido' => '',
+    'correo' => '',
+    'telefono' => '',
+    'evento' => '',
+    'check' => '',
+];
 
 // Validacion 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -35,10 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filters['check']['filter'] = FILTER_VALIDATE_BOOLEAN;
     $filters['check']['flags'] = FILTER_NULL_ON_FAILURE;
 
-    // Validar entradas
+    
+    // Recoge los datos del formulario sobreescribiendo el arrau usuario y valida los datos con los filtros 
     $usuario = filter_input_array(INPUT_POST, $filters);
 
-    $datos = filter_var_array($usuario, $filters);
+    // Valida los datos del formulario
+    // $datos = filter_var_array($usuario, $filters);
 
     // Validar errores
     $error['nombre'] = $usuario['nombre'] ? '' : 'Debe de escribir un nombre';
@@ -58,12 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Realizar saneamiento 
-    $datos['nombre'] = filter_var($datos['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $datos['apellido'] = filter_var($datos['apellido'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $datos['correo'] = filter_var($datos['correo'], FILTER_SANITIZE_EMAIL);
-    $datos['telefono'] = filter_var($datos['telefono'], FILTER_SANITIZE_NUMBER_INT);
-
-
+    $datos['nombre'] = filter_var($usuario['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['apellido'] = filter_var($usuario['apellido'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['correo'] = filter_var($usuario['correo'], FILTER_SANITIZE_EMAIL);
+    $datos['telefono'] = filter_var($usuario['telefono'], FILTER_SANITIZE_NUMBER_INT);
 
 }
 ;
@@ -72,21 +80,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!-- Formulario -->
 <h1>Formulario de registro</h1>
 <form action="b6_final.php" method="POST">
-    Nombre: <input type="text" name="nombre" value="<?= $usuario['nombre'] ?>" require>
+    Nombre: <input type="text" name="nombre" value="<?= $datos['nombre'] ?>" require>
     <span style="color: red;" class="error"><?= $error['nombre'] ?></span><br>
 
-    Apellidos: <input type="text" name="apellido" value="<?= $usuario['apellido'] ?>" require>
+    Apellidos: <input type="text" name="apellido" value="<?= $datos['apellido'] ?>" require>
     <span style="color: red;" class="error"><?= $error['apellido'] ?></span><br>
 
-    Correo: <input type="text" name="correo" value="<?= $usuario['correo'] ?>" require>
+    Correo: <input type="text" name="correo" value="<?= $datos['correo'] ?>" require>
     <span style="color: red;" class="error"><?= $error['correo'] ?></span><br>
 
-    Telefono: <input type="text" name="telefono" value="<?= $usuario['telefono'] ?>" require>
+    Telefono: <input type="text" name="telefono" value="<?= $datos['telefono'] ?>" require>
     <span style="color: red;" class="error"><?= $error['telefono'] ?></span><br>
 
     Tipo de evento: <br>
-    Presencial <input type="radio" name="evento" value="presencial"<?= $usuario['evento'] === 'presencial' ? 'checked' : '' ?>>
-    Online <input type="radio" name="evento" value="online" <?= $usuario['evento'] === 'online' ? 'checked' : '' ?>>
+    Presencial <input type="radio" name="evento" value="presencial"<?= $datos['evento'] === 'presencial' ? 'checked' : '' ?>>
+    Online <input type="radio" name="evento" value="online" <?= $datos['evento'] === 'online' ? 'checked' : '' ?>>
     <span style="color: red;" class="error"><?= $error['evento'] ?></span><br>
     
 

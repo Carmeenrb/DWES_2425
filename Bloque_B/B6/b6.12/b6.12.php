@@ -27,7 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error['nombre'] = is_text($usuario['nombre'], 2, 20) ? '' : 'Debe de tener entre 2 y 20 caracteres';
     $error['edad'] = is_number($usuario['edad'], 16, 50) ? '' : 'Debe de tener entre 16 y 50 años';
     $error['check'] = $usuario['check'] ? '' : 'Debe de aceptar los terminos y condiciones';
+    // contraseña seria; 
+    // $error['contrasenia'] = validarcontra($usuario['contrasenia']) ? '' : 'Debe de tener minimo 8 caracteres';
 
+    
+
+        // Saneamiento
+        // $usuario['nombre]=htmlspecialchars[$_POST['nombre]];
+        //$nombre = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
     // Verificar si existen errores(te convierte un array en un string(si tiene un error lo muestra))
 
     $invalid = implode($error);
@@ -37,18 +44,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $sms = '¡Formulario válido! Gracias por aceptar los términos y condiciones.';
     }
+    // function validarcontra(contrasenia):bool{
+    // if(
+        // mb_strlen(contrasenia)>=8)
+        // $$ preg_martch(/[A-z],$contrasenia)
+        // $$ preg_martch([0-9],$contrasenia)
+        // {
+        // return true
+        // }
+        // retun false
+        // }
+    // }
     
 
 }
 // Funciones para validar texto y num
-function is_text($name, $min, $max)
+    function is_text($name, $min , $max)
     {
         return strlen($name) >= $min && strlen($name) <= $max;
     }
 
     function is_number($num, $min, $max)
     {
-        return is_numeric($num) && $num >= $min && $num <= $max;
+        return $num >= $min && $num <= $max;
     }
 
 

@@ -2,7 +2,7 @@
 <?php
 // Inicializamos variables o array
 // Array 
-$usuario=[
+$usuario = [
 
     'nombre' => '',
     'apellido' => '',
@@ -15,12 +15,12 @@ $usuario=[
 ];
 // Verificar que el formulario fue enviado 
 $submitted = isset($_GET['submitted']);
-if($submitted){
-    $usuario['nombre'] = htmlspecialchars($_GET['nombre'], ENT_QUOTES,'UTF-8');
-    $usuario['apellido'] = htmlspecialchars($_GET['apellido'], ENT_QUOTES,'UTF-8');
-    $usuario['direccion'] = htmlspecialchars($_GET['direccion'], ENT_QUOTES,'UTF-8');
-    $usuario['edad'] = htmlspecialchars($_GET['edad'], ENT_QUOTES,'UTF-8');
-    $usuario['posicion'] = htmlspecialchars($_GET['posicion'], ENT_QUOTES,'UTF-8');
+if ($submitted) {
+    $usuario['nombre'] = htmlspecialchars($_GET['nombre'], ENT_QUOTES, 'UTF-8');
+    $usuario['apellido'] = htmlspecialchars($_GET['apellido'], ENT_QUOTES, 'UTF-8');
+    $usuario['direccion'] = htmlspecialchars($_GET['direccion'], ENT_QUOTES, 'UTF-8');
+    $usuario['edad'] = htmlspecialchars($_GET['edad'], ENT_QUOTES, 'UTF-8');
+    $usuario['posicion'] = htmlspecialchars($_GET['posicion'], ENT_QUOTES, 'UTF-8');
 }
 
 ?>
