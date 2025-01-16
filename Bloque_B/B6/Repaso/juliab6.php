@@ -64,3 +64,4 @@ function validarPass($pass): bool{
 <?php endif; ?>
 
 <?php include '../includes/footer.php'; ?>
+

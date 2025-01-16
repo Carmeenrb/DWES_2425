@@ -6,7 +6,7 @@ $usuario=[
     'correo' => '',
     'edad' => '',
     'contrasenia' => '',
-    'check' => false,
+    'check' => ''
 ];
 $datos=[
     'nombre' => '',
@@ -22,7 +22,7 @@ $error=[
     'correo' => '',
     'edad' => '',
     'contrasenia' => '',
-    'check' => false,
+    'check' => ''
 ];
 // Verificar que el formulario fue enviado 
 $submitted = $_GET['sent'] ?? '';
@@ -35,6 +35,8 @@ if ($submitted === 'enviar'){
     $usuario['contrasenia'] = $_GET['contrasenia'];
     $usuario['check'] = isset($_GET['check']);
 
+    $usuario = filter_input_array(INPUT_GET);
+
     // Errores
     $error['nombre']= validarTxt($usuario['nombre'],2,20) ? '' : 'El nombre debe de estar relleno';
     $error['apellido']= validarTxt($usuario['apellido'],2,50) ? '' : 'El apellido debe de estar relleno';
@@ -44,6 +46,7 @@ if ($submitted === 'enviar'){
     $error['check'] = $usuario['check'] ? '' : 'Debe de aceptar los terminos y condiciones';
 
     $invalid = !empty(array_filter($error));
+
     if ($invalid) {
         $sms = 'Por favor corrige los errores';
 
@@ -88,7 +91,7 @@ if ($submitted === 'enviar'){
 <?php include '../includes/header.php' ?>
 <h1>Formulario de Registro</h1>
 
-<form action="probando.php" method="GET">
+<form action="formManual_GET.php" method="GET">
     Nombre: <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
     <span class="error"><?= $error['nombre'] ?></span><br>
 

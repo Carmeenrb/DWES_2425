@@ -17,11 +17,20 @@ $error = [
     'evento' => '',
     'check' => '',
 ];
-$datos = [];
-$sms = '';
+$datos = [
+    'nombre' => '',
+    'apellido' => '',
+    'correo' => '',
+    'telefono' => '',
+    'evento' => '',
+    'check' => '',
+];
+
 
 // Verificar si el formulario fue enviado
-if (isset($_GET['submitted'])) {
+$submi = $_GET['submitted'] ?? '';
+if ($submi === 'enviar'){
+// if (isset($_GET['submitted']) && $_GET['submitted'] === 'enviar') {
     // Configurar filtros
     $filters['nombre']['filter'] = FILTER_VALIDATE_REGEXP;
     $filters['nombre']['options']['regexp'] = '/[A-z]{2,50}/';
@@ -31,7 +40,7 @@ if (isset($_GET['submitted'])) {
     $filters['telefono']['filter'] = FILTER_VALIDATE_REGEXP;
     $filters['telefono']['options']['regexp'] = '/[0-9]{9}/';
     $filters['evento']['filter'] = FILTER_VALIDATE_REGEXP;
-    $filters['evento']['options']['regexp'] = '/^(presencial|online)$/';
+    $filters['evento']['options']['regexp'] = '/(presencial|online)/';
     $filters['check']['filter'] = FILTER_VALIDATE_BOOLEAN;
     $filters['check']['flags'] = FILTER_NULL_ON_FAILURE;
 
@@ -47,17 +56,21 @@ if (isset($_GET['submitted'])) {
     $error['check'] = $usuario['check'] ? '' : 'Debe aceptar las condiciones de uso';
 
     // Revisar si hay errores
-    $invalid = implode($error);
+    $errores = array_filter($error); 
+    $invalid = implode(", ",$errores);
+
     if ($invalid) {
         $sms = 'Por favor, corrige los errores';
     } else {
         $sms = '¡Gracias! Los datos son correctos.';
-        // Saneamiento
-        $datos['nombre'] = filter_var($usuario['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $datos['apellido'] = filter_var($usuario['apellido'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $datos['correo'] = filter_var($usuario['correo'], FILTER_SANITIZE_EMAIL);
-        $datos['telefono'] = filter_var($usuario['telefono'], FILTER_SANITIZE_NUMBER_INT);
+        
     }
+    // Saneamiento
+    $datos['nombre'] = filter_var($usuario['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['apellido'] = filter_var($usuario['apellido'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['correo'] = filter_var($usuario['correo'], FILTER_SANITIZE_EMAIL);
+    $datos['telefono'] = filter_var($usuario['telefono'], FILTER_SANITIZE_NUMBER_INT);
+    // $datos['check'] = isset($usuario['check']) ? true : false;
 }
 ?>
 
@@ -65,41 +78,40 @@ if (isset($_GET['submitted'])) {
 <h1>Formulario de registro</h1>
 
 <!-- Formulario -->
-<form action="b6_final_get.php" method="GET">
-    Nombre: <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre'] ?? '') ?>" required>
-    <span style="color: red;" class="error"><?= htmlspecialchars($error['nombre']) ?></span><br>
+<form action="Formulario_GET.php" method="GET">
+    Nombre: <input type="text" name="nombre" value="<?= $datos['nombre'] ?>" required>
+    <span style="color: red;" class="error"><?= $error['nombre'] ?></span><br>
 
-    Apellidos: <input type="text" name="apellido" value="<?= htmlspecialchars($usuario['apellido'] ?? '') ?>" required>
-    <span style="color: red;" class="error"><?= htmlspecialchars($error['apellido']) ?></span><br>
+    Apellidos: <input type="text" name="apellido" value="<?= $datos['apellido']  ?>" required>
+    <span style="color: red;" class="error"><?= $error['apellido']?></span><br>
 
-    Correo: <input type="email" name="correo" value="<?= htmlspecialchars($usuario['correo'] ?? '') ?>" required>
-    <span style="color: red;" class="error"><?= htmlspecialchars($error['correo']) ?></span><br>
+    Correo: <input type="email" name="correo" value="<?= $datos['correo'] ?>" required>
+    <span style="color: red;" class="error"><?= $error['correo'] ?></span><br>
 
-    Teléfono: <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono'] ?? '') ?>" required>
-    <span style="color: red;" class="error"><?= htmlspecialchars($error['telefono']) ?></span><br>
+    Teléfono: <input type="text" name="telefono" value="<?= $datos['telefono']  ?>" required>
+    <span style="color: red;" class="error"><?= $error['telefono']  ?></span><br>
 
     Tipo de evento:<br>
-    Presencial <input type="radio" name="evento" value="presencial" <?= ($usuario['evento'] ?? '') === 'presencial' ? 'checked' : '' ?>>
-    Online <input type="radio" name="evento" value="online" <?= ($usuario['evento'] ?? '') === 'online' ? 'checked' : '' ?>>
-    <span style="color: red;" class="error"><?= htmlspecialchars($error['evento']) ?></span><br>
+    Presencial <input type="radio" name="evento" value="presencial" <?= ($datos['evento'] ?? '') === 'presencial' ? 'checked' : '' ?>>
+    Online <input type="radio" name="evento" value="online" <?= ($datos['evento'] ?? '') === 'online' ? 'checked' : '' ?>>
+    <span style="color: red;" class="error"><?= $error['evento'] ?></span><br>
 
-    Acepta términos y condiciones: <input type="checkbox" name="check" value="true" <?= $usuario['check'] ? 'checked' : '' ?> required>
-    <span style="color: red;"><?= htmlspecialchars($error['check']) ?></span><br>
+    Acepta términos y condiciones: <input type="checkbox" name="check" value="true" <?= $datos['check'] ? 'checked' : '' ?> required>
+    <span style="color: red;"><?= $error['check'] ?></span><br>
 
-    <input type="submit" name="submitted" value="Enviar">
+    <input type="submit" name="submitted" value="enviar">
 </form>
 
 <!-- Mensajes -->
+<?php if ($submi === 'enviar') { ?>
+    <h2>Resultados:</h2>
+    <pre><?php var_dump($datos); ?></pre>
+<?php } ?>
+
 <?php if (!empty($sms)) { ?>
     <div style="<?= $invalid ? 'color: red;' : 'color: green;' ?>">
         <h3><?= htmlspecialchars($sms) ?></h3>
     </div>
-<?php } ?>
-
-<!-- Resultados -->
-<?php if (isset($_GET['submitted']) && !$invalid) { ?>
-    <h2>Resultados:</h2>
-    <pre><?= var_dump($datos) ?></pre>
-<?php } ?>
+<?php } ?> 
 
 <?php include '../includes/footer.php'; ?>
