@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
 <h1>Cargar Archivos</h1>
 <p><?= $sms?></p>
 <!-- Para incriptar las imagenes (enctype) -->
-
+<!-- el php_self lo que hace es llamar a la misma pagina -->
 <form method="POST" action="<?= $_SERVER['PHP_SELF']?> "enctype="multipart/form-data">
     <label for="image"><b>Upload file:</b></label>
         <input type="file" name="image" accept="image/*" id="image"><br>
