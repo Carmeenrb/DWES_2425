@@ -1,6 +1,7 @@
 <?php
 // Variables
 $extension = ['jpeg', 'jpg', 'png', 'gif'];
+$tipo_extension = ['image/jpeg', 'image/png', 'image/gif'];
 $maxSize = 5 * 1024 * 1024; // Tamaño máximo 5 MB
 $max_width = 200;
 $max_height = 200;
@@ -61,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Redimensionar imagen
+// Redimensionar imagen con GD
 function resize_image_gd($ruta_img, $ruta_img_min, $max_width, $max_height) {
     $img = getimagesize($ruta_img); // Obtener la información de la imagen
     list($orig_width, $orig_height, $type) = $img;
@@ -130,6 +131,12 @@ function resize_image_gd($ruta_img, $ruta_img_min, $max_width, $max_height) {
         <input type="file" name="image" accept="image/jpeg, image/png, image/gif" required>
         <button type="submit">Subir</button>
     </form>
+    <!-- Vista previa -->
+    <?php if($ruta_img){ ?>
+        <h2>Vista previa</h2>
+        <img src="<?= $ruta_img ?>" alt="Imagen original">
+        <img src="<?= $ruta_img_min ?>" alt="Miniatura">
+    <?php } ?>
     <!-- Mostrar mensaje -->
     <?php if ($sms){ ?>
         <p><?= $sms ?></p>
