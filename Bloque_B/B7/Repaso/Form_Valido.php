@@ -8,6 +8,9 @@ $usuario = [
     'correo' => '',
     'telefono' => '',
     'sms' => '',
+    'genero' => '',
+    'check' => '',
+
 ];
 $error = [
     'nombre' => '',
@@ -15,6 +18,9 @@ $error = [
     'correo' => '',
     'telefono' => '',
     'sms' => '',
+    'genero' => '',
+    'check' => '',
+
 ];
 $datos = [
     'nombre' => '',
@@ -22,11 +28,13 @@ $datos = [
     'correo' => '',
     'telefono' => '',
     'sms' => '',
+    'genero' => '',
+    'check' => '',
 ];
 
 // imagenes gd
 $mover_gd = false;
-$nombre_arch_gd= '';
+$nombre_arch_gd = '';
 $mensaje_gd = '';
 $sms_error = '';
 $ruta_gd = 'uploads/';
@@ -37,7 +45,7 @@ $tipo_exts = ['jpeg', 'jpg', 'png', 'gif',];
 
 // imagenes imagick
 $mover_ik = false;
-$nombre_arch_ik= '';
+$nombre_arch_ik = '';
 $mensaje_ik = '';
 $ruta_imk = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
 $ruta_miniatura_imk = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'thumbs' . DIRECTORY_SEPARATOR;
@@ -132,6 +140,7 @@ function resize_image_imagick($source, $ruta_min)
 
 // COMPROBAR PETICION 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Validar
     $filtros['nombre']['filter'] = FILTER_VALIDATE_REGEXP; // o el filter sanitare string
     $filtros['nombre']['options']['regexp'] = '/[A-z]{3,}/';
     $filtros['edad']['filter'] = FILTER_VALIDATE_INT;
@@ -142,6 +151,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filtros['telefono']['options']['regexp'] = '/[0-9]{9}/';
     $filtros['sms']['filter'] = FILTER_VALIDATE_REGEXP;
     $filtros['sms']['options']['regexp'] = '/[A-z]{1,50}/';
+    $filtros['genero']['filter'] = FILTER_VALIDATE_REGEXP;
+    $filtros['genero']['options']['regexp'] = '/^(masculino|femenino|otro)$/';  // Validamos los valores permitidos
+    $filtros['check'] = FILTER_VALIDATE_BOOLEAN;  // Verifica si el checkbox está marcado
 
 
     // Validar entradas
@@ -156,6 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error['correo'] = $usuario['correo'] ? '' : 'El correo no es valido';
     $error['telefono'] = $usuario['telefono'] ? '' : 'El telefono no es correcto';
     $error['sms'] = $usuario['sms'] ? '' : 'Debe de tener al menos 3 caracteres';
+    $error['genero'] = $usuario['genero'] ? '' : 'Debe seleccionar un género';
+    $error['check'] = isset($usuario['check']) && $usuario['check'] ? '' : 'Debe aceptar los términos y condiciones';
 
     // Si hay errores
     $invalid = implode($error);
@@ -173,6 +187,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $datos['correo'] = filter_var($datos['correo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $datos['telefono'] = filter_var($datos['telefono'], FILTER_SANITIZE_NUMBER_INT);
     $datos['sms'] = filter_var($datos['sms'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['genero'] = filter_var($usuario['genero'], FILTER_SANITIZE_STRING);
+    $datos['aceptar_condiciones'] = isset($usuario['aceptar_condiciones']) ? true : false;
 
 
     // Imagen con GD
@@ -244,7 +260,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <?php include '../includes/header.php' ?>
 <h1>Formulario de contacto</h1><br>
-<form action="formulario.php" method="POST" enctype="multipart/form-data">
+<form action="Form_Valido.php" method="POST" enctype="multipart/form-data">
     Nombre: <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
     <span style="color: red;" class="error"><?= $error['nombre'] ?></span><br><br>
 
@@ -259,20 +275,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     Mensaje: <input type="text" name="sms" value="<?= $datos['sms'] ?>">
     <span style="color: red;" class="error"><?= $error['sms'] ?></span><br><br>
-<br>
+
+    <!-- Genero -->
+    <label>Género</label>
+    <select name="genero">
+        <option value="">Seleccionar una opcion</option>
+        <option value="masculino"><?= ($datos['genero'] === 'masculino') ? 'selected' : '' ?>Masculino</option>
+        <option value="femenino"><?= ($datos['genero'] === 'femenino') ? 'selected' : '' ?>Femenino</option>
+    </select><br>
+    <span style="color: red;" class="error"><?= $error['genero'] ?></span><br>
+
+    <!-- Condiciones -->
+    <label>
+        <input type="checkbox" name="check" value="1" <?= (isset($datos['check']) && $datos['check'] == 1) ? 'checked' : '' ?>>
+        Acepto los términos y condiciones
+    </label><br>
+    <span style="color: red;" class="error"><?= $error['check'] ?></span><br><br>
+    <br>
+
     <!-- IMAGEN -->
     <!-- Hacerlo con gb -->
     <label for="image"><b>Upload file GD:</b></label>
     <input type="file" name="image_gd" accept="image/*" id="image_gd"><br>
-    <input type="submit" value="upload"><br><br>
-    <?= $mensaje_gd ?><br><br>
+    <input type="submit" value="upload"><br>
+    <?= $mensaje_gd ?><br>
 
     <!-- Hacerlo con imagick -->
     <label for="image"><b>Upload file imagick:</b></label>
     <input type="file" name="imagick" accept="image/*" id="imagick"><br>
-    <input type="submit" value="upload"><br><br>
+    <input type="submit" value="upload"><br>
 
-    <?= $mensaje_ik ?><br><br>
+    <?= $mensaje_ik ?><br>
     <input type="submit" value="Save">
 </form>
 <br>

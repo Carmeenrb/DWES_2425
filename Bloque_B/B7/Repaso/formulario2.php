@@ -6,7 +6,7 @@ $usuario = [
     'edad' => '',
     'correo' => '',
     'telefono' => '',
-    'mensaje' => '',
+    'sms' => '',
     'genero' => '',
     'check' => false,
 ];
@@ -16,11 +16,19 @@ $error = [
     'edad' => '',
     'correo' => '',
     'telefono' => '',
-    'mensaje' => '',
+    'sms' => '',
     'genero' => '',
     'check' => '',
 ];
-$datos = [];
+$datos = [
+    'nombre' => '',
+    'edad' => '',
+    'correo' => '',
+    'telefono' => '',
+    'sms' => '',
+    'genero' => '',
+    'check' => '',
+];
 
 // Imagen gd
 $mover_gd = false;
@@ -144,8 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filtros['sms']['options']['regexp'] = '/[A-z]{1,50}/';
     $filters['genero']['filter'] = FILTER_VALIDATE_REGEXP;
     $filters['genero']['options']['regexp'] = '/(masculino|femenino)/';
-    $filters['check']['filter'] = FILTER_VALIDATE_BOOLEAN;
-    $filters['check']['flags'] = FILTER_NULL_ON_FAILURE;
+    $filters['check'] = FILTER_VALIDATE_BOOLEAN;
+
 
 
     // Validar entradas
@@ -177,11 +185,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Aplicar los filtros de saneamiento 
-    $datos['nombre'] = filter_var($datos['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $datos['edad'] = filter_var($datos['edad'], FILTER_SANITIZE_NUMBER_INT);
-    $datos['correo'] = filter_var($datos['correo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $datos['telefono'] = filter_var($datos['telefono'], FILTER_SANITIZE_NUMBER_INT);
-    $datos['sms'] = filter_var($datos['sms'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['nombre'] = filter_var($usuario['nombre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['edad'] = filter_var($usuario['edad'], FILTER_SANITIZE_NUMBER_INT);
+    $datos['correo'] = filter_var($usuario['correo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $datos['telefono'] = filter_var($usuario['telefono'], FILTER_SANITIZE_NUMBER_INT);
+    $datos['sms'] = filter_var($usuario['sms'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    // $datos['genero'] = htmlspecialchars($usuario['evento'], ENT_QUOTES, 'UTF-8');
+    $datos['genero'] = filter_var($usuario['genero'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $datos['check'] = $usuario['check'] ? 'Sí' : 'No';
 
     // imagen GD
 // Comprobamos si hay error en el tamaño de la imagen 
@@ -265,35 +277,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <!-- Formulario -->
-    <form action="formulario.php" method="POST" enctype="multipart/form-data">
-        Nombre: <input type="text" name="nombre" value="<?= $usuario['nombre'] ?>">
+    <form action="formulario2.php" method="POST" enctype="multipart/form-data">
+        Nombre: <input type="text" name="nombre" value="<?= $datos['nombre'] ?>">
         <span style="color: red;" class="error"><?= $error['nombre'] ?></span><br><br>
 
-        Edad: <input type="text" name="edad" value="<?= $usuario['edad'] ?>">
+        Edad: <input type="text" name="edad" value="<?= $datos['edad'] ?>">
         <span style="color: red;" class="error"><?= $error['edad'] ?></span><br><br>
 
-        Correo: <input type="text" name="correo" value="<?= $usuario['correo'] ?>">
+        Correo: <input type="text" name="correo" value="<?= $datos['correo'] ?>">
         <span style="color: red;" class="error"><?= $error['correo'] ?></span><br><br>
 
-        Telefono: <input type="text" name="telefono" value="<?= $usuario['telefono'] ?>">
+        Telefono: <input type="text" name="telefono" value="<?= $datos['telefono'] ?>">
         <span style="color: red;" class="error"><?= $error['telefono'] ?></span><br><br>
 
-        Mensaje: <input type="text" name="sms" value="<?= $usuario['sms'] ?>">
+        Mensaje: <input type="text" name="sms" value="<?= $datos['sms'] ?>">
         <span style="color: red;" class="error"><?= $error['sms'] ?></span><br><br>
 
         <!-- Elegir -->
         <label>Género</label>
         <select name="genero">
             <option value="">Seleccionar una opcion</option>
-            <option value="fisico"><?= ($usuario['genero'] === 'fisico') ? 'selected' : '' ?>>Físico</option>
-            <option value="digital"><?= ($usuario['genero'] === 'digital') ? 'selected' : '' ?>>Digital</option>
-        </select>
+            <option value="masculino"><?= ($usuario['genero'] === 'masculino') ? 'selected' : '' ?>>Masculino</option>
+            <option value="femenino"><?= ($usuario['genero'] === 'femenino') ? 'selected' : '' ?>>Femenino</option>
+        </select><br>
         <span style="color: red;"><?= $error['genero'] ?></span>
         <br>
 
         <!-- Aceptar las condiciones -->
         <label>
-            <input type="checkbox" name="check" value="true" <?= $usuario['check'] ? 'checked' : '' ?>>
+            <input type="checkbox" name="check" value="true" <?= $datos['check'] ? 'checked' : '' ?>>
             Acepto los términos y condiciones
         </label>
         <span style="color: red;"><?= $error['check'] ?></span>
