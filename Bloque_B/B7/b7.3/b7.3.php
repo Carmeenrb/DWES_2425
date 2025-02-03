@@ -15,20 +15,29 @@ function validar_nombre($nombre, $ruta) {
     // Limpiar el nombre base
     $nombre_base = preg_replace('/[^A-Za-z0-9\-]/', '_', $nombre_base);
 
-    // Crear la ruta del archivo de destino
-    $archivo = $nombre_base . '.' . $extension;
 
     // Evitar sobreescribir archivos existentes
     $contador = 0;
     
-    while (file_exists($ruta . $archivo)) {
+    while (file_exists($ruta . $nombre_base)) {
         $contador++;
-        $archivo = $nombre_base . '_' . $contador . '.' . $extension;
+        $nombre = $nombre_base . '_' . $contador . '.' . $extension;
     }
 
-    return $archivo;
+    return $nombre;
 }
 
+// ASI MEJOR 
+
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    // if $_FILES['image']['error'] === 0) {
+    // // $error.= ($_FILES['image]['size]<= $max) ? '' : 'Demasiado grande';
+    // $type = mime_content_type($_FILE[image][tmp_name])
+    // error.= in_array($type, allowesTypes) ? '' : 'Tipo de archivo incorrecto';
+    // $ext = strtolower(pathinfo($_FILES['image][name],PATHINFO_EXTENSION));
+    // error .= in_array($ext, allowedExts)? '' : 'Extension del archivo incorrect';
+    
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
         $file_name = $_FILES['image']['name'];

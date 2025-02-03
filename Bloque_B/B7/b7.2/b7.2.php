@@ -1,5 +1,4 @@
 <!-- Pagina 37 -->
-
 <?php 
 $sms = '';
 $confirmacion = 'Se ha subido correctamente';

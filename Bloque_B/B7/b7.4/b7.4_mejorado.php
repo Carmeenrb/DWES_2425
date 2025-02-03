@@ -3,9 +3,9 @@
 $mover         = false;                                       
 $sms           = '';                                           
 $error         = '';                                           
-$ruta          = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'imagenes'  . DIRECTORY_SEPARATOR;
-$ruta_miniatura = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'imagenes' . DIRECTORY_SEPARATOR . 'img_miniatura'  . DIRECTORY_SEPARATOR;
-$max_size      = 5242880;                                      // Max file size (5MB)
+$max_height = 200;
+$ruta_img = 'imagenes/';  // Carpeta para las imágenes originales
+$ruta_img_min = 'imagenes/img_miniatura/';  // Carpeta para las miniaturas$max_size      = 5242880;                                      // Max file size (5MB)
 $tipo_extension = ['image/jpeg', 'image/png', 'image/gif'];      // Tipos MIME permitidos
 $extension      = ['jpeg', 'jpg', 'png', 'gif'];                // Extensiones de archivos permitidas
 
@@ -32,7 +32,7 @@ function create_filename($nombre_fichero, $ruta) {
     $extension  = pathinfo($nombre_fichero, PATHINFO_EXTENSION);       // Extensión del archivo
     $nombre_base = preg_replace('/[^A-z0-9]/', '-', $nombre_base);     // Limpiar el nombre base
     $nombre_fichero = $nombre_base . '.' . $extension;                  // Combinar con la extensión
-    $i          = 0;
+    $i= 0;
 
     // Comprobar si el archivo ya existe, y si es así, añadir un sufijo numérico
     while (file_exists($ruta . $nombre_fichero)) {

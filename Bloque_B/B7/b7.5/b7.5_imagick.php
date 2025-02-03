@@ -1,4 +1,6 @@
 <?php
+// en imagick no se puede usar la ruta relativa
+
 // Variables
 $extension = ['jpeg', 'jpg', 'png', 'gif'];
 $tipo_extension = ['image/jpeg', 'image/png', 'image/gif'];
