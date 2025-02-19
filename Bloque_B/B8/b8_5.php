@@ -4,6 +4,7 @@
     Generar y mostrar todas las fechas futuras del evento durante un periodo determinado(proximos 2 meses) 
     Mostrar duracion del evento  -->
 
+    <!-- En la pagina 70 es donde encontramos lo de P1D(intervalo) para el date interval -->
     <!-- Pagina 90  -->
 <?php
 $mensaje = '';
