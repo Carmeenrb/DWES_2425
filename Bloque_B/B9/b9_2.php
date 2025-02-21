@@ -25,14 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
 $idioma_preferido = $_COOKIE['idioma'] ?? null;
 ?>
 
-<!DOCTYPE html>
-<html lang="<?php echo $idioma_preferido ?? 'es'; ?>">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preferencia de Idioma</title>
-</head>
-<body>
+<?php include 'includes/header.php'; ?>
 <?php if ($idioma_preferido){ ?>
         <?php if ($idioma_preferido === 'es'){ ?>
             <h1>Bienvenido a nuestro sitio web</h1>
@@ -56,5 +49,4 @@ $idioma_preferido = $_COOKIE['idioma'] ?? null;
             <button type="submit">Guardar preferencia</button>
         </form>
     <?php } ?>
-</body>
-</html>
+    <?php include 'includes/footer.php'; ?>

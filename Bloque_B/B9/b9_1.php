@@ -26,9 +26,9 @@ if (isset($_COOKIE['nombre'])) {
 }
 ?>
 
-<?php include './includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <!-- Mostrar el mensaje de bienvenida o el formulario -->
 <?= $mensaje; ?>
 
-<?php include './includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
